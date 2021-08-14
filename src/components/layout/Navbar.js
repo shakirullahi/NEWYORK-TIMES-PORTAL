@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav>
         <div className='nav-wrapper'>
           <a href='#' className='brand-logo'>
-            NEWYORK TIMES
+            <span style={{ marginLeft: "20px" }}>NEWYORK TIMES</span>
           </a>
           <ul id='nav-mobile' className='right hide-on-med-and-down'>
             <li>
@@ -36,7 +36,16 @@ const Navbar = () => {
         </div>
       </nav>
     );
-  } else return "";
+  } else
+    return (
+      <nav>
+        <div className='nav-wrapper'>
+          <a href='#' className='brand-logo'>
+            <span style={{ marginLeft: "20px" }}>NEWYORK TIMES</span>
+          </a>
+        </div>
+      </nav>
+    );
 };
 
 export default Navbar;
