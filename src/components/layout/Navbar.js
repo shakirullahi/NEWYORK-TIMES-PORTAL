@@ -43,6 +43,14 @@ const Navbar = () => {
           <a href='#' className='brand-logo'>
             <span style={{ marginLeft: "20px" }}>NEWYORK TIMES</span>
           </a>
+          <ul id='nav-mobile' className='right hide-on-med-and-down'>
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
+            <li>
+              <Link to='/register'>Register</Link>
+            </li>
+          </ul>
         </div>
       </nav>
     );

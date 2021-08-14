@@ -43,7 +43,7 @@ const Login = (props) => {
   return (
     <Fragment>
       <div className='row'>
-        <h2>Login</h2>
+        <h4>Login</h4>
         <form className='col s12' onSubmit={onLogin}>
           <div className='row'>
             <div className='input-field col s6'>
@@ -81,7 +81,7 @@ const Login = (props) => {
           </div>
         </form>
       </div>
-      <div className='row'>
+      {/* <div className='row'>
         <a
           href='#!'
           onClick={goToRegister}
@@ -89,7 +89,7 @@ const Login = (props) => {
         >
           Register
         </a>
-      </div>
+      </div> */}
     </Fragment>
   );
 };

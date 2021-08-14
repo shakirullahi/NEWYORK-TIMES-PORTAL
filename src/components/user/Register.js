@@ -48,7 +48,7 @@ const Register = (props) => {
 
   return (
     <div className='row'>
-      <h2>Register</h2>
+      <h4>Register</h4>
       <form className='col s12' onSubmit={onRegister}>
         <div className='row'>
           <div className='input-field col s6'>
