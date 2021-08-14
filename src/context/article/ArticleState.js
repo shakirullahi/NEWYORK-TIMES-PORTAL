@@ -24,7 +24,7 @@ const ArticleState = (props) => {
     let offset = (currentArticlePage - 1) * 20 + 1;
     try {
       const res = await axios.get(
-        `https://api.nytimes.com/svc/news/v3/content/all/${section}.json?limit=20?offset=${offset}?api-key=uR1j3A82i48Cvvn6A4pQRWBCIhUCIvG7`
+        `https://api.nytimes.com/svc/news/v3/content/all/${section}.json?limit=20&offset=${offset}&api-key=uR1j3A82i48Cvvn6A4pQRWBCIhUCIvG7`
       );
       console.log(res.data.results);
       dispatch({

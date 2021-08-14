@@ -13,11 +13,11 @@ const Navbar = () => {
   if (user) {
     return (
       <nav>
-        <div class='nav-wrapper'>
-          <a href='#' class='brand-logo'>
+        <div className='nav-wrapper'>
+          <a href='#' className='brand-logo'>
             NEWYORK TIMES
           </a>
-          <ul id='nav-mobile' class='right hide-on-med-and-down'>
+          <ul id='nav-mobile' className='right hide-on-med-and-down'>
             <li>
               <Link to='/home'>Home</Link>
             </li>

@@ -6,12 +6,14 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
 
   const userContext = useContext(UserContext);
-  const { login, user } = userContext;
+  const { login, loadUser, user } = userContext;
 
   useEffect(() => {
     if (user) {
       //goto home
       props.history.replace("/home");
+    } else if (localStorage.token) {
+      loadUser(localStorage.token);
     }
   }, [user]);
 

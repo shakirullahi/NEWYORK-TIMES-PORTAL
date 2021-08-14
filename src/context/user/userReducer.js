@@ -17,12 +17,14 @@ const userReducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
+        token: action.payload.email,
       };
     case LOGOUT_SUCESS:
     case ACCOUNT_DELETE_SUCCESS:
       return {
         ...state,
         user: null,
+        token: null,
       };
     case REMOVE_READ_LATER_SUCCESS:
       return {

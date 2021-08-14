@@ -15,6 +15,7 @@ import {
 const UserState = (props) => {
   const initialState = {
     user: null,
+    token: localStorage.getItem("token"),
     currentReadLaterPage: 1,
   };
 
@@ -39,6 +40,7 @@ const UserState = (props) => {
         users.push(formData);
         // Re-serialize the array back into a string and store it in localStorage
         localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("token", formData.email);
 
         formData.readLaterList = [];
         delete formData.password;
@@ -67,6 +69,29 @@ const UserState = (props) => {
         alert("Invalid Credentials, Try Again !!");
       } else {
         delete userFound[0].password;
+        localStorage.setItem("token", formData.email);
+
+        dispatch({ type: LOGIN_SUCCESS, payload: userFound[0] });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // load user
+  const loadUser = async (token) => {
+    try {
+      var users = [];
+      // Parse the serialized data back into an aray of objects
+      users = JSON.parse(localStorage.getItem("users")) || [];
+
+      //check for user
+      let userFound = users.filter((user) => user.email === token);
+
+      if (userFound.length === 0) {
+        alert("Invalid Token !!");
+      } else {
+        delete userFound[0].password;
+        localStorage.setItem("token", token);
 
         dispatch({ type: LOGIN_SUCCESS, payload: userFound[0] });
       }
@@ -187,7 +212,7 @@ const UserState = (props) => {
 
       // Re-serialize the array back into a string and store it in localStorage
       localStorage.setItem("users", JSON.stringify(users));
-
+      localStorage.setItem("token", null);
       dispatch({ type: ACCOUNT_DELETE_SUCCESS });
     } catch (err) {
       console.log(err);
@@ -196,6 +221,7 @@ const UserState = (props) => {
 
   // logout user
   const logout = () => {
+    localStorage.setItem("token", null);
     dispatch({ type: LOGOUT_SUCESS });
   };
 
@@ -206,6 +232,7 @@ const UserState = (props) => {
         currentReadLaterPage: state.currentReadLaterPage,
         login,
         logout,
+        loadUser,
         register,
         updateUserProfile,
         deleteAccount,
