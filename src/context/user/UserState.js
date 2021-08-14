@@ -5,7 +5,7 @@ import userReducer from "./userReducer";
 import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOGOUT_SUCESS,
   PROFILE_UPDATE_SUCCESS,
   ACCOUNT_DELETE_SUCCESS,
   ADD_READ_LATER_SUCCESS,
@@ -196,7 +196,7 @@ const UserState = (props) => {
 
   // logout user
   const logout = () => {
-    dispatch({ type: LOGOUT });
+    dispatch({ type: LOGOUT_SUCESS });
   };
 
   return (

@@ -1,11 +1,11 @@
 import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOGOUT_SUCESS,
   PROFILE_UPDATE_SUCCESS,
   ACCOUNT_DELETE_SUCCESS,
   REMOVE_READ_LATER_SUCCESS,
-  ADD_READ_LATER_SUCCESS
+  ADD_READ_LATER_SUCCESS,
 } from "../types";
 
 const userReducer = (state, action) => {
@@ -13,12 +13,12 @@ const userReducer = (state, action) => {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
     case PROFILE_UPDATE_SUCCESS:
-      case ADD_READ_LATER_SUCCESS:
+    case ADD_READ_LATER_SUCCESS:
       return {
         ...state,
         user: action.payload,
       };
-    case LOGOUT:
+    case LOGOUT_SUCESS:
     case ACCOUNT_DELETE_SUCCESS:
       return {
         ...state,
@@ -27,7 +27,7 @@ const userReducer = (state, action) => {
     case REMOVE_READ_LATER_SUCCESS:
       return {
         ...state,
-        user = {...user, readLaterList:{...action.payload}},
+        user: { ...state.user, readLaterList: { ...action.payload } },
       };
     default:
       return state;

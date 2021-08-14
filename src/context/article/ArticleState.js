@@ -17,7 +17,7 @@ const ArticleState = (props) => {
   };
 
   //get articles
-  const getArticles = (section, currentArticlePage) => {
+  const getArticles = async (section, currentArticlePage) => {
     if (!section) {
       section = "all";
     }
@@ -41,7 +41,7 @@ const ArticleState = (props) => {
   };
 
   //get sections
-  const getSections = () => {
+  const getSections = async () => {
     try {
       const res = await axios.get(
         `https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=uR1j3A82i48Cvvn6A4pQRWBCIhUCIvG7`

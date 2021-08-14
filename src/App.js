@@ -14,6 +14,7 @@ import Register from "./components/user/Register";
 import Profile from "./components/user/Profile";
 import ReadLater from "./components/user/ReadLater";
 import Home from "./components/pages/Home";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 const App = () => {
   useEffect(() => {
@@ -28,7 +29,6 @@ const App = () => {
           <Fragment>
             <Navbar />
             <div className='container'>
-              <Alerts />
               <Switch>
                 <Route exact path='/' component={Login} />
                 <PrivateRoute exact path='/home' component={Home} />
