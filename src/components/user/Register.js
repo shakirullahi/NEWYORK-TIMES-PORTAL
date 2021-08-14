@@ -12,7 +12,7 @@ const Register = (props) => {
     if (user) {
       //goto home
       props.history.replace("/home");
-    } else if (localStorage.token) {
+    } else if (localStorage.token !== "null") {
       loadUser(localStorage.token);
     }
   }, [user]);
