@@ -37,12 +37,12 @@ const UserState = (props) => {
         alert("Email address already exist !!");
       } else {
         // Push the new data (whether it be an object or anything else) onto the array
+        formData.readLaterList = [];
         users.push(formData);
         // Re-serialize the array back into a string and store it in localStorage
         localStorage.setItem("users", JSON.stringify(users));
         localStorage.setItem("token", formData.email);
 
-        formData.readLaterList = [];
         delete formData.password;
 
         dispatch({ type: REGISTER_SUCCESS, payload: formData });
@@ -101,7 +101,8 @@ const UserState = (props) => {
   };
 
   // Remove item from later list
-  const removeReadLaterItem = async (email, slug_name) => {
+  const removeReadLaterItem = (email, slug_name) => {
+    // console.log(slug_name);
     try {
       var users = [];
       // Parse the serialized data back into an aray of objects
@@ -115,13 +116,16 @@ const UserState = (props) => {
 
           //remove item form reader list
           user.readLaterList.forEach((item, index) => {
-            if (item.slug_name !== slug_name) {
+            if (JSON.parse(item).slug_name === slug_name) {
+              console.log("aaaaaaaaaaaa");
               readLaterList.splice(index, 1);
             }
           });
 
           //update readLaterList
           user.readLaterList = [...readLaterList];
+          console.log(user);
+          console.log(readLaterList);
         }
 
         return user;
@@ -150,7 +154,7 @@ const UserState = (props) => {
       var updatedUser = {};
       users = users.map((user) => {
         if (user.email === email) {
-          user = { ...user, readLaterList: { ...user.readLaterList, article } };
+          user = { ...user, readLaterList: [...user.readLaterList, article] };
         }
         updatedUser = { ...user };
         return user;

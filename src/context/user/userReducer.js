@@ -29,7 +29,7 @@ const userReducer = (state, action) => {
     case REMOVE_READ_LATER_SUCCESS:
       return {
         ...state,
-        user: { ...state.user, readLaterList: { ...action.payload } },
+        user: { ...state.user, readLaterList: [...action.payload] },
       };
     default:
       return state;
