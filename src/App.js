@@ -15,6 +15,7 @@ import Profile from "./components/user/Profile";
 import ReadLater from "./components/user/ReadLater";
 import Home from "./components/pages/Home";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import EditProfile from "./components/user/EditProfile";
 
 const App = () => {
   useEffect(() => {
@@ -34,6 +35,11 @@ const App = () => {
                 <PrivateRoute exact path='/home' component={Home} />
                 <PrivateRoute exact path='/profile' component={Profile} />
                 <PrivateRoute exact path='/read-later' component={ReadLater} />
+                <PrivateRoute
+                  exact
+                  path='/editProfile'
+                  component={EditProfile}
+                />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
               </Switch>

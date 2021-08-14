@@ -180,17 +180,19 @@ const UserState = (props) => {
   };
 
   // Edit user
-  const updateUserProfile = async (formData) => {
+  const updateUserProfile = (formData) => {
     console.log(formData);
 
     try {
       var users = [];
       // Parse the serialized data back into an aray of objects
       users = JSON.parse(localStorage.getItem("users")) || [];
-      var updatedUser;
+      var updatedUser = {};
       users = users.map((user) => {
+        console.log(user);
         if (user.email === formData.email) {
-          updatedUser = [user];
+          updatedUser = { ...user };
+          console.log(updatedUser);
           updatedUser.password = formData.password;
           updatedUser.name = formData.name;
 
