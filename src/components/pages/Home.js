@@ -3,6 +3,7 @@ import ArticleContext from "../../context/article/articleContext";
 import Sections from "../section/Sections";
 import ArticleItem from "./ArticleItem";
 
+const pages = [];
 const Home = (props) => {
   const articleContext = useContext(ArticleContext);
   const {
@@ -14,7 +15,14 @@ const Home = (props) => {
     getSections,
   } = articleContext;
 
+  var count = 0;
   useEffect(() => {
+    if (pages.length === 0) {
+      for (let i = 1; i < 500; i += 20) {
+        count++;
+        pages.push(count);
+      }
+    }
     if (articles === null) {
       getArticles(null, 1);
       console.log("==================");
@@ -35,39 +43,24 @@ const Home = (props) => {
         <div className='col s3'>{sections !== null && <Sections />}</div>
 
         <div className='col s9'>
-          <h2 className='header'>Article List</h2>
+          <h4 className='header'>Article List</h4>
 
           {articles !== null &&
-            articles.map((article) => (
-              <ArticleItem article={article} key={article.slug_name} />
+            articles.map((article, index) => (
+              <ArticleItem article={article} key={index} />
             ))}
         </div>
         <ul className='pagination'>
-          <li className={currentArticlePage == 1 ? "active" : "waves-effect"}>
-            <a href='#!' page={1} onClick={onPageChange}>
-              1
-            </a>
-          </li>
-          <li className={currentArticlePage == 2 ? "active" : "waves-effect"}>
-            <a href='#!' page={2} onClick={onPageChange}>
-              2
-            </a>
-          </li>
-          <li className={currentArticlePage == 3 ? "active" : "waves-effect"}>
-            <a href='#!' page={3} onClick={onPageChange}>
-              3
-            </a>
-          </li>
-          <li className={currentArticlePage == 4 ? "active" : "waves-effect"}>
-            <a href='#!' page={4} onClick={onPageChange}>
-              4
-            </a>
-          </li>
-          <li className={currentArticlePage == 5 ? "active" : "waves-effect"}>
-            <a href='#!' page={5} onClick={onPageChange}>
-              5
-            </a>
-          </li>
+          {pages.map((item) => (
+            <li
+              key={item}
+              className={currentArticlePage == item ? "active" : "waves-effect"}
+            >
+              <a href='#!' page={item} onClick={onPageChange}>
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div className='row'></div>

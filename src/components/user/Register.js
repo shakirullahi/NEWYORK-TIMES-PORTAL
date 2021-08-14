@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import UserContext from "../../context/user/userContext";
 
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 const Register = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -30,8 +36,20 @@ const Register = (props) => {
   };
   const onRegister = (e) => {
     e.preventDefault();
-    console.log("register");
-    register({ name, email, password });
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (name == "" || password === "" || email === "") {
+      alert("please fill all fields");
+    } else if (!validateEmail(email)) {
+      alert("invalid Email");
+    } else if (format.test(password)) {
+      alert("Special characters are not allowed in password");
+    } else if (format.test(name)) {
+      alert("Special characters are not allowed in name field");
+    } else if (password.length > 20) {
+      alert("Max password length 20 characters");
+    } else {
+      register({ name, email, password });
+    }
   };
 
   return (

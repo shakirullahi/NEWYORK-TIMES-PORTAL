@@ -25,7 +25,7 @@ const ArticleItem = ({ article }) => {
               href='#!'
               onClick={readLater}
               article={JSON.stringify(article)}
-              className='btn-floating btn-large waves-effect waves-light red'
+              className='btn-floating btn-large waves-effect waves-light red right'
             >
               <i className='material-icons'>add</i>
             </a>

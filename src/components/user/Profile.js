@@ -29,7 +29,7 @@ const Profile = (props) => {
                 <span className='card-title'>User Profile</span>
                 <ul className='collection'>
                   <li className='collection-item grey avatar'>
-                    <i class='material-icons circle'>person</i>
+                    <i className='material-icons circle'>person</i>
                     <span className='title'>
                       Name : {user.name.toUpperCase()}
                     </span>

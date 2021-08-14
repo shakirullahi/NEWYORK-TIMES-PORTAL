@@ -78,7 +78,7 @@ const Login = (props) => {
         <a
           href='#!'
           onClick={goToRegister}
-          class='waves-effect waves-light red  btn-small'
+          className='waves-effect waves-light red  btn-small'
         >
           Register
         </a>
