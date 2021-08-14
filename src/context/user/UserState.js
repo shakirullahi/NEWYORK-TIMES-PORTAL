@@ -10,6 +10,7 @@ import {
   ACCOUNT_DELETE_SUCCESS,
   ADD_READ_LATER_SUCCESS,
   REMOVE_READ_LATER_SUCCESS,
+  READ_LATER_PAGE_UPDATE,
 } from "../types";
 
 const UserState = (props) => {
@@ -20,6 +21,12 @@ const UserState = (props) => {
   };
 
   const [state, dispatch] = useReducer(userReducer, initialState);
+
+  //UPDATE PAGE NO
+  const updateCurrentReadLaterPage = (page) => {
+    console.log(page);
+    dispatch({ type: READ_LATER_PAGE_UPDATE, payload: page });
+  };
 
   // Register user
   const register = async (formData) => {
@@ -242,6 +249,7 @@ const UserState = (props) => {
         deleteAccount,
         removeReadLaterItem,
         addReadLaterItem,
+        updateCurrentReadLaterPage,
       }}
     >
       {props.children}

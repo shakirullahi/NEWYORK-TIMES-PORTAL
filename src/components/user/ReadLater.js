@@ -3,7 +3,12 @@ import UserContext from "../../context/user/userContext";
 
 const ReadLater = (props) => {
   const userContext = useContext(UserContext);
-  const { removeReadLaterItem, user, currentReadLaterPage } = userContext;
+  const {
+    removeReadLaterItem,
+    user,
+    currentReadLaterPage,
+    updateCurrentReadLaterPage,
+  } = userContext;
 
   const [page, setPage] = useState(1);
   const onRemoveitem = (e) => {
@@ -17,6 +22,7 @@ const ReadLater = (props) => {
 
   const onPageChange = (e) => {
     setPage(e.target.getAttribute("page"));
+    updateCurrentReadLaterPage(e.target.getAttribute("page"));
   };
 
   return (

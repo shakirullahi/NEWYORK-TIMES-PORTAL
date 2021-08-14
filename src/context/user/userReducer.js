@@ -6,6 +6,7 @@ import {
   ACCOUNT_DELETE_SUCCESS,
   REMOVE_READ_LATER_SUCCESS,
   ADD_READ_LATER_SUCCESS,
+  READ_LATER_PAGE_UPDATE,
 } from "../types";
 
 const userReducer = (state, action) => {
@@ -30,6 +31,11 @@ const userReducer = (state, action) => {
       return {
         ...state,
         user: { ...state.user, readLaterList: [...action.payload] },
+      };
+    case READ_LATER_PAGE_UPDATE:
+      return {
+        ...state,
+        currentReadLaterPage: action.payload,
       };
     default:
       return state;
